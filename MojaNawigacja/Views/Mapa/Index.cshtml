@@ -1,0 +1,52 @@
+﻿@model MojaNawigacja.Models.AdresyModel
+@{
+    ViewBag.Title = "Trasa przejazdu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        wyswietlMape("mapa");
+    });
+</script>
+
+<h2>@ViewBag.Title</h2>
+
+@*@<div>
+        <p>
+            @Html.Label("Miejsce wyjazdu:")
+            <br />
+            @Html.TextBox("MiejsceWyjazdu", null, new { id = "Text1" })
+        </p>
+        <p>
+            @Html.Label("Miejsce docelowe:")
+            <br />
+            @Html.TextBox("MiejsceDocelowe", null, new { id = "Text2" })
+        </p>
+        <p>
+            <input id="Button1" type="button" value="Wyznacz trasę"
+                   onclick="wyznaczTrase('Text1', 'Text2');" />
+        </p>
+    </div>*@
+
+@using (Html.BeginForm())
+{
+    <div class="editor-label">
+        @Html.LabelFor(m => m.MiejsceWyjazdu, "Miejsce wyjazdu")
+    </div>
+    <div class="editor-label">
+        @Html.TextBoxFor(m => m.MiejsceWyjazdu, new { id = "Text1" })
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(m => m.MiejsceDocelowe, "Miejsce docelowe")
+    </div>
+    <div class="editor-label">
+        @Html.TextBoxFor(m => m.MiejsceDocelowe, new { id = "Text2" })
+    </div>
+    <input id="Button1" type="button" value="Wyznacz trasę" />
+}
+
+    <div id='mapa' style="position:relative; width: 400px; height: 400px;"></div>
+
+    <h2>Index</h2>
+

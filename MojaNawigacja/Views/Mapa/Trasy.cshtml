@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MojaNawigacja.Models.AdresyModel>
+
+@{ 
+    ViewBag.Title = "Trasy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Trasy użytkowników</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Miejsce wyjazdu
+            </th>
+            <th>
+                Miejsce docelowe
+            </th>
+            <th>
+                Data dodania
+            </th>
+            <th>
+                Opcje
+            </th>
+        </tr>
+    </thead>
+@foreach(var adres in Model)
+{
+    <tr>
+        <td>
+            @Html.Encode(adres.IdTrasy)
+        </td>
+        <td>
+            @Html.Encode(adres.MiejsceWyjazdu)
+        </td>
+        <td>
+            @Html.Encode(adres.MiejsceDocelowe)
+        </td>
+        <td>
+            @Html.Encode(adres.DataDodania)
+        </td>
+        <td>
+            @Html.ActionLink("Usuń", "UsunTrase", adres)
+        </td>
+    </tr>
+}
+</table>
